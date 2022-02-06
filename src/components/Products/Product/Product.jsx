@@ -5,7 +5,7 @@ import {
   CardContent,
   CardActions,
   Typography,
-  IconButton,
+  Fab,
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 
@@ -35,9 +35,9 @@ const Product = ({ product }) => {
       </CardContent>
 
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart">
+        <Fab size="small" color="primary" aria-label="Add to Cart">
           <AddShoppingCart />
-        </IconButton>
+        </Fab>
       </CardActions>
     </Card>
   );
