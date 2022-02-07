@@ -4,14 +4,50 @@ import {
   Toolbar,
   IconButton,
   Badge,
-  Menu,
   MenuItem,
+  Menu,
   Typography,
 } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
+import { ShoppingCart } from "@material-ui/icons";
+
+import logo from "../../assets/sweets-cloud.png";
+import useStyles from "./styles";
 
 const Navbar = () => {
-  return <div></div>;
+  const classes = useStyles();
+
+  return (
+    <>
+      <AppBar
+        position="fixed"
+        className={classes.appBar}
+        color="transparent"
+        elevation={0}
+      >
+        <Toolbar>
+          <Typography variant="h6" className={classes.title} color="inherit">
+            <img
+              src={logo}
+              alt="sweets cloud"
+              height="35px"
+              className={classes.image}
+            />{" "}
+            Sweets Cloud
+          </Typography>
+
+          <div className={classes.grow} />
+
+          <div className={classes.button}>
+            <IconButton aria-label="Show cart items" color="inherit">
+              <Badge badgeContent={2} color="secondary">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
 };
 
 export default Navbar;
