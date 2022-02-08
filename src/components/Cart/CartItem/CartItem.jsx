@@ -5,11 +5,11 @@ import {
   CardContent,
   CardMedia,
   Fab,
-  Toolbar,
+  IconButton,
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import { DeleteRounded } from "@material-ui/icons";
+import { DeleteRounded, Add, Remove } from "@material-ui/icons";
 
 import useStyles from "./styles";
 
@@ -24,26 +24,31 @@ const CartItem = ({ item }) => {
         className={classes.media}
       />
       <CardContent className={classes.content}>
-        <Typography variant="h6">{item.name}</Typography>
-        <Toolbar />
-        <Typography variant="h7">
+        <Typography variant="h5">{item.name}</Typography>
+        <Typography variant="h6" color="textSecondary">
           {item.line_total.formatted_with_symbol}
+        </Typography>
+        <Typography variant="subtitle1" color="textSecondary">
+          Options:{" "}
+          {item.selected_options.length
+            ? item.selected_options
+            : "No selections"}
         </Typography>
       </CardContent>
 
-      <CardActions className={classes.cardAction}>
+      <CardActions className={classes.cartActions}>
         <div className={classes.buttons}>
-          <Button type="button" size="small">
-            -
-          </Button>
+          <IconButton aria-label="Subtract">
+            <Remove />
+          </IconButton>
           <Typography>{item.quantity}</Typography>
-          <Button type="button" size="small">
-            +
-          </Button>
+          <IconButton aria-label="Add">
+            <Add />
+          </IconButton>
         </div>
-        <Fab size="small" color="secondary" aria-label="Remove">
+        <IconButton size="small" color="secondary" aria-label="Remove">
           <DeleteRounded />
-        </Fab>
+        </IconButton>
       </CardActions>
     </Card>
   );

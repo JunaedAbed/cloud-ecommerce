@@ -9,7 +9,8 @@ export default makeStyles(() => ({
     justifyContent: "space-between",
   },
   cartActions: {
-    justifyContent: "space-between",
+    display: "flex",
+    justifyContent: "flex-end",
   },
   buttons: {
     display: "flex",
