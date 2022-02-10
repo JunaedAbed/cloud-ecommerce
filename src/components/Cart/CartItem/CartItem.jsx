@@ -13,7 +13,7 @@ import { DeleteRounded, Add, Remove } from "@material-ui/icons";
 
 import useStyles from "./styles";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, handleUpdateQty, handleRemoveFromCart }) => {
   const classes = useStyles();
 
   return (
@@ -38,15 +38,30 @@ const CartItem = ({ item }) => {
 
       <CardActions className={classes.cartActions}>
         <div className={classes.buttons}>
-          <IconButton aria-label="Subtract">
+          <IconButton
+            aria-label="Subtract"
+            onClick={() => {
+              handleUpdateQty(item.id, item.quantity - 1);
+            }}
+          >
             <Remove />
           </IconButton>
           <Typography>{item.quantity}</Typography>
-          <IconButton aria-label="Add">
+          <IconButton
+            aria-label="Add"
+            onClick={() => {
+              handleUpdateQty(item.id, item.quantity + 1);
+            }}
+          >
             <Add />
           </IconButton>
         </div>
-        <IconButton size="small" color="secondary" aria-label="Remove">
+        <IconButton
+          size="small"
+          color="secondary"
+          aria-label="Remove"
+          onClick={() => handleRemoveFromCart(item.id)}
+        >
           <DeleteRounded />
         </IconButton>
       </CardActions>
