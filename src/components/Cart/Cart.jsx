@@ -13,8 +13,6 @@ const Cart = ({
 }) => {
   const classes = useStyle();
 
-  if (!cart.line_items) return "Loading...";
-
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       You have no items in your cart{" "}
@@ -23,6 +21,8 @@ const Cart = ({
       </Link>
     </Typography>
   );
+
+  if (!cart.line_items) return "Loading...";
 
   const FilledCart = () => (
     <>
@@ -54,6 +54,8 @@ const Cart = ({
             Empty
           </Button>
           <Button
+            component={Link}
+            to="/checkout"
             className={classes.checkoutButton}
             size="large"
             type="button"
@@ -74,7 +76,7 @@ const Cart = ({
       <Typography variant="h3" className={classes.title} gutterBottom>
         Your Shopping Cart
       </Typography>
-      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      {!cart.line_items.length ? EmptyCart() : FilledCart()}
     </Container>
   );
 };
