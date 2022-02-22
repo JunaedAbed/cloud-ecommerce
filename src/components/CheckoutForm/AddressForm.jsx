@@ -101,7 +101,7 @@ const AddressForm = ({ checkoutToken, next }) => {
           )}
         >
           <Grid container spacing={3}>
-            <FormInput name="firstName" label="First name" />
+            <FormInput name="firstName" label="First name" defaultValue=" " />
             <FormInput name="lastName" label="Last name" />
             <FormInput name="address" label="Address" />
             <FormInput name="email" label="Email" />
@@ -127,6 +127,7 @@ const AddressForm = ({ checkoutToken, next }) => {
               <InputLabel>Shipping Division</InputLabel>
               <Select
                 value={shippingDivision}
+                defaultValue=""
                 fullWidth
                 onChange={(e) => setShippingDivision(e.target.value)}
               >
